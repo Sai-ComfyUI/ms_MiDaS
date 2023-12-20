@@ -36,6 +36,10 @@ def _get_rel_pos_bias(self, window_size):
     new_height = 2 * window_size[0] - 1
     new_width = 2 * window_size[1] - 1
 
+    if (torch. __version__) == "2.1.0+cu121":
+        new_height = new_height.item()
+        new_width = new_width.item()
+
     old_relative_position_bias_table = self.relative_position_bias_table
 
     old_num_relative_distance = self.num_relative_distance
